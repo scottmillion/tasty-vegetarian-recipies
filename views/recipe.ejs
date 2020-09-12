@@ -1,0 +1,23 @@
+<a href="/recipe">Generate another recipe</a>
+
+<h2><%= recipe.title %></h2>
+
+<p>Time to cook: <%= recipe.readyInMinutes %> minutes.</p>
+
+<p>Servings: <%= recipe.servings %></p>
+
+<p>Full recipe info <a href="<%= recipe.sourceUrl %>">here</a>.</p>
+
+<img src="<%= recipe.image %>" alt="">
+
+<p>Description: <%- recipe.summary %></p>
+
+<p>Instructions: <%- recipe.instructions %></p>
+
+<p>Ingredients:</p>
+<ul>
+  <% recipe.extendedIngredients.forEach(element => { %>
+  <li><%= element.original %></li>
+  <% }) %>
+
+</ul>
