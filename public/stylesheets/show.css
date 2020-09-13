@@ -1,0 +1,19 @@
+#chocolate {
+  color: green;
+}
+
+.image-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  -webkit-box-shadow: 4px 6px 7px -2px rgba(0,0,0,0.49);
+  -moz-box-shadow: 4px 6px 7px -2px rgba(0,0,0,0.49);
+  box-shadow: 4px 6px 7px -2px rgba(0,0,0,0.49);
+
+}

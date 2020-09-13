@@ -12,14 +12,17 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.get("/show/:title", (req, res) => {
+  res.render("show");
+});
+
 app.get("/recipe", (req, res) => {
-  // fetch('https://api.spoonacular.com/recipes/random?apiKey=120a318750fc4294b6406710583ca19b&number=1&tags=vegetarian')
+  // fetch('https://api.spoonacular.com/recipes/random?apiKey=120a318750fc4294b6406710583ca19b&number=12&tags=italian')
   //   .then(res => res.json())
   //   .then((json) => {
   //     console.log(json);
   //     return res.render("recipe", { recipe: json.recipes[0] })
   //   });
-
 });
 
 

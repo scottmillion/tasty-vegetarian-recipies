@@ -1,9 +1,6 @@
 body {
   background-color: rgb(140, 140, 236);
-  font-family: 'Roboto', sans-serif;
-  
-
-  
+  font-family: 'Roboto', sans-serif;  
 }
 
 nav {
@@ -34,9 +31,21 @@ nav li {
   margin-left: 5px;  
 }
 
+.nav-left {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: .1rem;
+}
+
+.nav-left a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .welcome {
   padding: 40px 20px;
   width: 50%;
+  min-width: 800px;
   margin: auto;
   margin-top: 100px;
   border: 2px solid rgb(114, 114, 194, 0.5);
@@ -45,35 +54,6 @@ nav li {
   -webkit-box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
   -moz-box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
   box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
-}
-
-.left {
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: .1rem;
-}
-
-.left a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.container {
-  width: 80%;
-  min-width: 360px;
-  background-color: white;
-  border: 2px solid  rgb(114, 114, 194, 0.5);
-  margin: 30px auto;
-  margin-bottom: 60px;
-  border-radius: 25px;
-  -webkit-box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
-  -moz-box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
-  box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
-  
-}
-
-.text-center {
-  text-align: center;
 }
 
 .h1-wrap {
@@ -129,15 +109,26 @@ h2 {
   color: rgb(140, 140, 236);
   background: white; 
   border: 1px solid rgb(140, 140, 236);
-  
   transition: ease-out 500ms;
-  
 }
 
 .button:focus {
   outline: 1px solid rgb(140, 140, 236);
   box-shadow: none;
   outline-offset: 2px;
+}
+
+.container {
+  width: 80%;
+  min-width: 400px;
+  background-color: white;
+  border: 2px solid  rgb(114, 114, 194, 0.5);
+  margin: 30px auto;
+  margin-bottom: 60px;
+  border-radius: 25px;
+  -webkit-box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
+  -moz-box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
+  box-shadow: 4px 6px 7px -3px rgba(0,0,0,0.49);
   
 }
 
@@ -149,15 +140,13 @@ h2 {
   padding-top: 40px;
 }
 
+
+
 .dish-pic {
   width: 30%;
-  min-width: 300px;
   height: 300px;
-  
   background: center no-repeat white;
   background-size: cover;
-
-
   margin-bottom: 30px;
   border-radius: 5px;
   -webkit-box-shadow: 4px 6px 7px -2px rgba(0,0,0,0.49);
@@ -171,7 +160,7 @@ h2 {
 .dish-pic:hover {
   height: 400px;
   transition: ease-out 200ms;
-  opacity: 0.2;
+  opacity: 0.8;
 }
 
 .dish-pic-item {
@@ -191,8 +180,36 @@ h2 {
 }
 
 
+
 .top-item {
   align-self: flex-start;
+  
+}
+
+.middle-item {
+  width: 100%;
+  font-size: 1.3rem;
+  margin: auto;
+  display: none;  
+}
+
+.middle-item p {
+  background: rgb(140, 140, 236);
+  color: white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 20px;
+  
+}
+
+.middle-item p:hover {
+  background: rgb(255, 255, 255, 0.8);
+  color: rgb(140, 140, 236);
+}
+
+.middle-item a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .bottom-item {
@@ -207,4 +224,50 @@ h2 {
   color: green;
 }
 
+.text-center {
+  text-align: center;
+}
 
+.show-as-block {
+  display: block;
+}
+
+@media (max-width: 1250px){
+  
+  
+  .dish-pic {
+    width: 45%;
+    
+  }
+  
+}
+
+@media (max-width: 1050px){
+  h1 {
+    font-size: 2.3rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .welcome {
+    width: 75%;
+    min-width: 360px;
+  }
+
+}
+
+@media (max-width: 800px){
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  .dish-pic {
+    width: 94%;
+  } 
+
+  
+  
+}
