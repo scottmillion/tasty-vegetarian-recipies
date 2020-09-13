@@ -3,39 +3,30 @@
   <div class="h1-wrap">
     <h1 class="text-center"></h1>
   </div>
-  <div class="image-container"><img src="" alt=""></div>
+  <div class="image-container"><img src="" alt="food-image"></div>
   <h2 class="text-center"></h2>
 
+  <ul>
+    <li></li>
+  </ul>
 
+  console.log(json.recipes[j].title);
+  console.log(json.recipes[j].readyInMinutes);
+  console.log(json.recipes[j].servings);
+  console.log(json.recipes[j].sourceUrl);
+  console.log(json.recipes[j].image);
+  console.log(json.recipes[j].summary);
+  console.log(json.recipes[j].instructions);
+  console.log(json.recipes[j].extendedIngredients);
 
   <div class="text-center">
-    <!-- <a href="/recipe"><button class="button">Get a random recipe!</button></a></div> -->
-    <a href="/"><button class="button"><i class="fas fa-arrow-circle-right"></i> Back</button></a>
+    <a><button class="button" id="back-button"><i class="fas fa-arrow-circle-right"></i> Back</button></a>
   </div>
 </div>
 
 
 
 
-<script>
-  window.onload = function () {
-    //===BREAKDOWN QUERY STRING. UPDATE HTML CONTENT.===
-    const queryArray = location.search.split("|");
-    const title = queryArray[0].substring(1).split("%20").join(" ");
-    const description = queryArray[1].split("%20").join(" ");
-    const imageURL = queryArray[2];
-    document.querySelector("h1").textContent = title;
-    document.querySelector("h2").textContent = description;
-    document.querySelector("img").setAttribute("src", imageURL);
 
-    //===ADD A SECOND STYLESHEET TO HEAD===
-    //NOT IDEAL, BUT WANTED TO TRY IT THIS WAY
-    const head = document.querySelector("head");
-    const newStyleSheet = document.createElement('link');
-    newStyleSheet.rel = "stylesheet";
-    newStyleSheet.href = "/stylesheets/show.css"
-    head.appendChild(newStyleSheet);
-  };
-</script>
 <script src="/js/show.js"></script>
 <%- include('partials/footer') %>
