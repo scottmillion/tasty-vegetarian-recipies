@@ -2,8 +2,13 @@
   color: green;
 }
 
+h2 {
+  margin-top: 50px;
+}
+
 .image-container {
   width: 80%;
+  min-width: 360px;
   margin: auto;
   margin-top: 30px;
 }
@@ -16,4 +21,20 @@
   -moz-box-shadow: 4px 6px 7px -2px rgba(0,0,0,0.49);
   box-shadow: 4px 6px 7px -2px rgba(0,0,0,0.49);
 
+}
+
+.info-container {
+  width: 80%;
+  min-width: 360px;
+  margin: 0 auto;
+}
+
+.last-p {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: large;
+}
+
+#back-button {
+  margin: 30px auto;
 }

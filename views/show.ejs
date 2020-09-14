@@ -4,29 +4,27 @@
     <h1 class="text-center"></h1>
   </div>
   <div class="image-container"><img src="" alt="food-image"></div>
-  <h2 class="text-center"></h2>
+  <div class="info-container">
+    <h2 class="text-center">Description</h2>
+    <p class="summary"></p>
+    <p>Prep Time: <span class="readyInMinutes">??</span> minutes.</p>
+    <p>Serves: <span class="servings">?</span> adults.</p>
 
-  <ul>
-    <li></li>
-  </ul>
+    <h2 class="text-center">Ingredients</h2>
 
-  console.log(json.recipes[j].title);
-  console.log(json.recipes[j].readyInMinutes);
-  console.log(json.recipes[j].servings);
-  console.log(json.recipes[j].sourceUrl);
-  console.log(json.recipes[j].image);
-  console.log(json.recipes[j].summary);
-  console.log(json.recipes[j].instructions);
-  console.log(json.recipes[j].extendedIngredients);
+    <ul class=extendedIngredients></ul>
 
-  <div class="text-center">
-    <a><button class="button" id="back-button"><i class="fas fa-arrow-circle-right"></i> Back</button></a>
+    <h2 class="text-center">Instructions</h2>
+
+    <p class="instructions"></p>
+
+    <div class="text-center">
+      <a><button class="button" id="back-button"><i class="fas fa-arrow-circle-left"></i> Back</button></a>
+    </div>
+    <p class="text-center last-p">Visit <a href="#" class="sourceUrl" target="_blank">
+        official recipe page</a> on Foodista for more information.</p>
   </div>
 </div>
-
-
-
-
 
 <script src="/js/show.js"></script>
 <%- include('partials/footer') %>

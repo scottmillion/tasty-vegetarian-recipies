@@ -1,6 +1,4 @@
-
-
-//===SEED DATA===
+//===BACKUP SEED DATA===
 const veggieRecipes = [
   {
     title: "Red Curry with Green Beans",
@@ -71,82 +69,71 @@ window.onload = function () {
   let dishPics = document.getElementsByClassName("dish-pic");
   let imageButtonLinks = document.querySelectorAll(".image-button-link");
 
-  fetch('https://api.spoonacular.com/recipes/random?apiKey=120a318750fc4294b6406710583ca19b&number=12&tags=vegetarian')
-    .then(res => res.json())
-    .then((json) => {
-      for (let i = 0; i < 12; i++) {
-        let recipe = json.recipes[i] || veggieRecipes[i];
-        // ASSIGN IMAGE URLS
-        document.getElementById(`image${i}`).style.backgroundImage = `url(${recipe.image || 'https://veggieipsum.com/assets/veggie-ipsum.png'})`;
-        // document.getElementById(`image${i}`).style.backgroundImage = `url(${veggieRecipes[i].imageURL})`;
+  //===Update Elements with Spoonacular Food-Api Results  ===
+  function runApi(jsonOrArrOfObjects) {
+    for (let i = 0; i < 12; i++) {
+      //IF ERROR WITH JSON, USE SEED DATA
+      let recipe = jsonOrArrOfObjects.recipes[i] || veggieRecipes[i];
 
-        // ASSIGN TITLES
-        if (recipe.title.length > 50) {
-          dishTitles[i].textContent = recipe.title.substr(0, 50) + "...";
-        } else {
-          dishTitles[i].textContent = recipe.title;
-        }
+      //LOCAL STORAGE FOR SHOW PAGE
+      window.localStorage.setItem(`recipe${i}`, JSON.stringify(recipe));
 
-        // STRIP HTML FROM SUMMARY
-        function stripHtml(html) {
-          // Create a new div element
-          var temporalDivElement = document.createElement("div");
-          // Set the HTML content with the providen
-          temporalDivElement.innerHTML = html;
-          // Retrieve the text property of the element (cross-browser support)
-          return temporalDivElement.textContent || temporalDivElement.innerText || "";
-        }
+      // ASSIGN IMAGE URLS
+      document.getElementById(`image${i}`).style.backgroundImage = `url(${recipe.image || 'https://veggieipsum.com/assets/veggie-ipsum.png'})`;
 
-        let summary = stripHtml(recipe.summary) || recipe.summary;
-
-        // ASSIGN SUMMARY
-        if (summary.length > 80) {
-          dishPicPs[i].textContent = summary.substr(0, 80) + "...";
-
-        } else {
-          dishPicPs[i].textContent = summary;
-        }
-
-        // ASSIGN IMAGE BUTTON LINKS
-        // PASS OBJECT DATA TO SHOW PAGE THROUGH QUERY STRING
-        const showURL = `/show/${recipe.title.toLowerCase().split(' ').join('-')}
-      ?${recipe.image}|||||${recipe.title}|||||${summary}`;
-        imageButtonLinks[i].setAttribute("href", showURL);
-
-        // ADD EVENT LISTENERS TO IMAGES
-        dishPics[i].addEventListener("mouseenter", function (e) {
-          document.getElementById(`button${i}`).classList.add("show-as-block");
-        });
-        dishPics[i].addEventListener("mouseleave", function (e) {
-          document.getElementById(`button${i}`).classList.remove("show-as-block");
-        });
-        dishPics[i].addEventListener("click", function (e) {
-          window.location = showURL;
-        });
-      };
-
-      for (let j = 0; j < 1; j++) {
-
-        // we will need to handle undefined and maybe null
-        console.log(json.recipes[j].title);
-        console.log(json.recipes[j].readyInMinutes);
-        console.log(json.recipes[j].servings);
-        console.log(json.recipes[j].sourceUrl);
-        console.log(json.recipes[j].image);
-        console.log(json.recipes[j].summary);
-        console.log(json.recipes[j].instructions);
-        console.log(json.recipes[j].extendedIngredients);
-
+      // ASSIGN TITLES
+      if (recipe.title.length > 50) {
+        dishTitles[i].textContent = recipe.title.substr(0, 50) + "...";
+      } else {
+        dishTitles[i].textContent = recipe.title;
       }
-      //catch statement?
 
-    });
+      // STRIP HTML FROM SUMMARY
+      function stripHtml(html) {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = html;
+        return tempDiv.textContent || tempDiv.innerText || "";
+      }
 
+      let summary = stripHtml(recipe.summary) || recipe.summary;
 
+      // ASSIGN SUMMARY
+      if (summary.length > 80) {
+        dishPicPs[i].textContent = summary.substr(0, 80) + "...";
 
+      } else {
+        dishPicPs[i].textContent = summary;
+      }
 
+      // ASSIGN IMAGE BUTTON LINKS
+      // URL SLUG WITH JSON INDEX AT THE END (USED TO ACCESS CORRECT RECIPE ON SHOW PAGE)
+      const showURL = `/show/${recipe.title.replace(/[^a-zA-Z0-9-_\s]/g, '').toLowerCase().split(' ').join('-')}?${i}`
+      imageButtonLinks[i].setAttribute("href", showURL);
 
+      // ADD EVENT LISTENERS TO IMAGES
+      dishPics[i].addEventListener("mouseenter", function (e) {
+        document.getElementById(`button${i}`).classList.add("show-as-block");
+      });
+      dishPics[i].addEventListener("mouseleave", function (e) {
+        document.getElementById(`button${i}`).classList.remove("show-as-block");
+      });
+      dishPics[i].addEventListener("click", function (e) {
+        window.location = showURL;
+      });
+    };
+  }
 
+  //===Execute Spoonacular Food-Api ===
+  function fetchApi() {
+    fetch('https://api.spoonacular.com/recipes/random?apiKey=120a318750fc4294b6406710583ca19b&number=12&tags=vegetarian')
+      .then(res => res.json())
+      .then((json) => {
+        runApi(json);
+      })
+      .catch((err) => {
+        console.log(err);
+        runApi(veggieRecipes);
+      });
+  }
+  fetchApi();
 };
-
-
